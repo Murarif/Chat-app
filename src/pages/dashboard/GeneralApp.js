@@ -31,7 +31,22 @@ const GeneralApp = () => {
         <Converstation />
       </Box>
       {/* <Contack /> */}
-      {sidebar.open && <Contact />}
+      {sidebar.open &&
+        (() => {
+          switch (sidebar.type) {
+            case "CONTACT":
+              return <Contact />;
+
+            case "STARRED":
+              break;
+
+            case "SHARED":
+              return <SharedMessage />;
+
+            default:
+              break;
+          }
+        })()}
     </Stack>
   );
 };
